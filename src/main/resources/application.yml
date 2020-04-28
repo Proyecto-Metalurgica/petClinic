@@ -1,0 +1,74 @@
+#
+# Recommend use for static configuration that does not change between environments.
+#
+# See also config/application.properties
+#
+isis:
+
+  applib:
+    annotation:
+      action:
+        explicit: true
+
+  core:
+    meta-model:
+      validator:
+        allow-deprecated: false
+        no-params-only: true
+        explicit-object-type: true
+
+  viewer:
+    wicket:
+      application:
+        about: Hello World
+        brand-logo-header: images/apache-isis/logo-48x48.png
+        css: css/application.css
+        favicon-url: images/favicon.png
+        js: scripts/application.js
+        menubars-layout-xml: menubars.layout.xml
+        name: Hello World App
+
+      credit:
+        - url:  http://isis.apache.org
+          image: images/apache-isis/logo-48x48.png
+          name: Apache Isis
+
+      themes:
+        show-chooser: true
+
+      bookmarked-pages:
+        show-chooser: true
+        show-drop-down-on-footer: true
+
+      max-title-length-in-standalone-tables: 0
+      max-title-length-in-parented-tables: 0
+
+  persistence:
+    jdo-datanucleus:
+      impl:
+        # note that properties under 'isis.persistence.jdo-datanucleus.impl' are passed through directly
+        # to DataNucleus, and use variously camelCase or PascalCase rather than kebab-case
+        datanucleus:
+          schema:
+            validateTables: true
+            validateConstraints: true
+
+          persistenceByReachabilityAtCommit: false
+          identifier:
+            case: MixedCase
+
+          cache:
+            level2:
+              type: none
+              mode: ENABLE_SELECTIVE
+
+resteasy:
+  jaxrs:
+    app:
+      registration: beans
+    defaultPath: "/restful"
+
+spring:
+  banner:
+    location: banner.txt
+

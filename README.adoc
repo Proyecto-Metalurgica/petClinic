@@ -1,0 +1,73 @@
+= HelloWorld
+:toc:
+
+This is a minimal link:https://isis.apache.org[Apache Isis] application, intended as a starting point to learn what the framework is all about.
+
+[TIP]
+====
+For real-world development, we recommend you instead start with the link:https://github.com/apache/isis-app-simpleapp[SimpleApp] starter app.
+
+It provides more structure and includes examples of fixtures, unit tests, integration tests, and BDD (Cucumber) specs.
+====
+
+
+== Quick start
+
+* install prereqs:
+
+** Java 8 LTS (eg link:https://adoptopenjdk.net/[Adopt OpenJDK] distribution)
+** Maven 3.6 or later (http://maven.apache.org/download.cgi[download])
+* download and unzip
++
+[source,bash]
+----
+APP=helloworld
+BRANCH=master
+
+REPO=isis-app-$APP
+curl "https://codeload.github.com/apache/$REPO/zip/$BRANCH" | jar xv
+mv $REPO-$BRANCH $REPO
+cd $REPO
+----
+
+* Build using Maven:
++
+[source,bash]
+----
+mvn clean install
+----
+
+* Run from Maven:
++
+[source,bash]
+----
+mvn spring-boot:run
+----
+
+* Browse to http://localhost:8080.
+
+* Login using:
+
+** username: `sven`
+** password: `pass`
+
+The app runs with H2 running in-memory.
+
+
+
+== Development
+
+Apache Isis uses DataNucleus as its ORM, which requires that any entities are "enhanced", a post-compile process.
+
+Normally this is done as part of a "mvn clean install", but the entities can also be enhanced explicity using:
+
+[source,bash]
+----
+mvn datanucleus:enhance -o
+----
+
+This is useful to know if the application fails to bootstrap, complaining of "unenhanced entities".
+
+TIP: You can also use `enhance-all.sh`
+
+
