@@ -28,11 +28,11 @@ import domainapp.modules.hello.types.Notes;
 @javax.jdo.annotations.Unique(name="HelloWorldObject_name_UNQ", members = {"name"})
 @DomainObject(auditing = Auditing.ENABLED)
 @DomainObjectLayout()  // causes UI events to be triggered
-public class HelloWorldObject implements Comparable<HelloWorldObject> {
+public class Owner implements Comparable<Owner> {
 
-    private HelloWorldObject(){}
+    private Owner(){}
 
-    public HelloWorldObject(final String name) {
+    public Owner(final String name) {
         this.name = name;
     }
 
@@ -65,7 +65,7 @@ public class HelloWorldObject implements Comparable<HelloWorldObject> {
             publishing = Publishing.ENABLED,
             associateWith = "name"
     )
-    public HelloWorldObject updateName(
+    public Owner updateName(
             @Name final String name) {
         setName(name);
         return this;
@@ -89,8 +89,8 @@ public class HelloWorldObject implements Comparable<HelloWorldObject> {
     }
 
     @Override
-    public int compareTo(final HelloWorldObject other) {
-        return Comparator.comparing(HelloWorldObject::getName).compare(this, other);
+    public int compareTo(final Owner other) {
+        return Comparator.comparing(Owner::getName).compare(this, other);
     }
 
 

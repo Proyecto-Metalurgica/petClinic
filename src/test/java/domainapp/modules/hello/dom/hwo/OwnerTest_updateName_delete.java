@@ -16,17 +16,17 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 
 @ExtendWith(MockitoExtension.class)
-class HelloWorldObject_Test {
+class OwnerTest_updateName_delete {
 
     @Mock TitleService mockTitleService;
     @Mock MessageService mockMessageService;
     @Mock RepositoryService mockRepositoryService;
 
-    HelloWorldObject object;
+    Owner object;
 
     @BeforeEach
     void setup() {
-        object = new HelloWorldObject("Foo");
+        object = new Owner("Foo");
         object.titleService = mockTitleService;
         object.messageService = mockMessageService;
         object.repositoryService = mockRepositoryService;
